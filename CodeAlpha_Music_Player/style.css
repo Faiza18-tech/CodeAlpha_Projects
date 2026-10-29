@@ -1,0 +1,237 @@
+/* Base Body Styling & Ambient Glow */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #08090d;
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08), transparent 40%),
+        radial-gradient(circle at 85% 30%, rgba(255, 110, 64, 0.08), transparent 40%);
+    color: #8b95a5;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.font-cyber {
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* --- LUXURY METALLIC LOGO --- */
+.luxury-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.4em;
+    background: linear-gradient(180deg, #ffffff 0%, #ffd8c2 40%, #ff6e40 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 8px rgba(255, 110, 64, 0.8));
+    text-shadow: 0px 0px 20px rgba(255, 110, 64, 0.3); 
+}
+
+/* Neumorphic Shadows */
+.neu-chassis {
+    background-color: #120e21;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(168, 85, 247, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+.neu-inset {
+    background: #100b1d;
+    box-shadow: inset 4px 4px 8px #080511, inset -4px -4px 8px #19122a;
+}
+.neu-card {
+    background: linear-gradient(145deg, #18122c, #110c20);
+    box-shadow: 5px 5px 12px #090612, -5px -5px 12px #1d1636;
+}
+.neu-card-active {
+    background: linear-gradient(145deg, #110c20, #18122c);
+    box-shadow: inset 3px 3px 6px #080511, inset -3px -3px 6px #1d1636;
+    border: 1px solid rgba(255, 87, 34, 0.25);
+}
+.neu-btn {
+    background: linear-gradient(145deg, #18122c, #110c20);
+    box-shadow: 5px 5px 10px #090612, -5px -5px 10px #1d1636;
+}
+.neu-btn:active {
+    background: linear-gradient(145deg, #110c20, #18122c);
+    box-shadow: inset 3px 3px 6px #090a0e, inset -3px -3px 6px #1b1f2b;
+}
+.neu-orange-btn {
+    background: linear-gradient(145deg, #ff6e40, #e64a19);
+    box-shadow: 0 8px 20px rgba(230, 74, 25, 0.45), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* --- LUXURIOUS TEXT GRADIENTS --- */
+.luxury-text-grey {
+    background: linear-gradient(to right, #e2e8f0, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.luxury-text-orange {
+    background: linear-gradient(to right, #ff8a65, #ff3d00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 110, 64, 0.4);
+}
+
+/* --- PREMIUM HEADPHONE GLOW --- */
+.glow-ring {
+    position: relative;
+    background: #100b1d;
+    box-shadow: inset 4px 4px 8px #080511, inset -4px -4px 8px #19122a;
+    border-radius: 50%;
+}
+.glow-ring::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ff6e40, #a855f7, #06b6d4, #ff6e40);
+    background-size: 300% 300%;
+    z-index: -1;
+    animation: neonBorder 4s linear infinite;
+    filter: blur(8px);
+    opacity: 0.6;
+}
+@keyframes neonBorder {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.glow-headphone {
+    filter: drop-shadow(0 0 15px rgba(255, 110, 64, 0.8));
+    animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* CUSTOM DYNAMIC RANGE SLIDERS */
+input[type="range"].styled-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 9999px;
+    outline: none;
+    cursor: pointer;
+    background: #0d0f14;
+}
+input[type="range"].styled-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ff6e40;
+    box-shadow: 0 0 12px #ff6e40;
+    transition: transform 0.1s ease;
+    position: relative;
+    z-index: 2;
+}
+input[type="range"].styled-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* Screen Fade Animation */
+.screen-fade {
+    animation: fadeIn 0.25s ease-out forwards;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- PREMIUM NEON EQUALIZER ANIMATION --- */
+.eq-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 2px;
+    height: 16px;
+    width: 16px;
+    padding-bottom: 2px;
+}
+.eq-bar {
+    width: 2px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 0 8px #ff6e40, 0 0 2px #fff;
+    animation: bounce 1s infinite ease-in-out alternate;
+}
+.eq-bar:nth-child(1) { animation-duration: 0.6s; animation-delay: 0s; height: 6px; }
+.eq-bar:nth-child(2) { animation-duration: 0.8s; animation-delay: -0.2s; height: 12px; }
+.eq-bar:nth-child(3) { animation-duration: 0.5s; animation-delay: -0.4s; height: 16px; }
+.eq-bar:nth-child(4) { animation-duration: 0.9s; animation-delay: -0.1s; height: 10px; }
+.eq-bar:nth-child(5) { animation-duration: 0.7s; animation-delay: -0.3s; height: 8px; }
+
+@keyframes bounce {
+    0% { height: 4px; }
+    100% { height: 16px; }
+}
+
+/* Hide Scrollbar */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+
+/* =========================================
+   PREMIUM HOVER EFFECTS (Alive Feel)
+   ========================================= */
+
+/* 1. GET STARTED & Main Buttons Hover */
+.neu-orange-btn {
+    transition: all 0.3s ease;
+}
+.neu-orange-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(230, 74, 25, 0.6), 0 0 20px rgba(255, 110, 64, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+    filter: brightness(1.1);
+}
+.neu-orange-btn:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 4px 10px rgba(230, 74, 25, 0.4);
+}
+
+/* 2. Playlist Cards Hover (Gaano ki list) */
+.playlist-item {
+    transition: all 0.3s ease;
+}
+.playlist-item:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(145deg, #1d1636, #130d24);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), 0 0 15px rgba(168, 85, 247, 0.15);
+}
+
+/* 3. Play/Pause/Next/Prev Buttons Hover */
+.neu-btn {
+    transition: all 0.2s ease;
+}
+.neu-btn:hover {
+    transform: translateY(-2px);
+    color: #ff6e40 !important;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6), 0 0 10px rgba(255, 110, 64, 0.2);
+}
+.neu-btn:active {
+    transform: translateY(1px);
+    box-shadow: inset 3px 3px 6px #090a0e, inset -3px -3px 6px #1b1f2b;
+}
+
+/* 4. Headphone Icon Hover (FIXED - No weird glow) */
+/* Humne hover ko sirf icon par lagaya hai, glow wale ring par nahi */
+.glow-headphone {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.glow-ring:hover .glow-headphone {
+    transform: scale(1.15); /* Sirf headphone ka icon bada hoga */
+    filter: drop-shadow(0 0 25px rgba(255, 110, 64, 1)); /* Orange glow thoda aur bright hoga */
+    animation: none; /* Float animation ko pause karega taaki hover smooth lage */
+}
+/* 5. Icons Hover (Heart, Mute, Back) */
+.header-icon-btn, button:has(#volume-icon) {
+    transition: all 0.2s ease;
+}
+button:hover #volume-icon, 
+button:hover .fa-heart, 
+button:hover .fa-chevron-left {
+    color: #ff6e40 !important;
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 5px rgba(255, 110, 64, 0.5));
+}

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#081117">
+  <title>MathFlow — Smart Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Landing Page -->
+  <section id="landing" class="landing">
+   <nav class="landing-nav">
+  <a class="landing-brand" href="#" aria-label="MathFlow home">
+    <span class="landing-logo">∑</span>
+    <span>
+      MathFlow
+      <small>SMART CALCULATOR</small>
+    </span>
+  </a>
+</nav>
+
+    <div class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">
+          <span class="live-dot"></span>
+          YOUR EVERYDAY MATH, REIMAGINED
+        </div>
+
+        <h1>Make every<br>calculation
+          <span class="gradient-text">count.</span>
+        </h1>
+
+        <p class="hero-desc">
+          A smarter, calmer space for everyday math.
+          Calculate, convert, and keep your numbers moving
+          — all in one place.
+        </p>
+
+        <div class="hero-actions">
+          <button class="primary-cta" id="launchCalculator">
+            Start calculating <span>→</span>
+          </button>
+        </div>
+
+        <div class="hero-proof">
+          <div class="avatar-stack">
+            <span>+</span><span>÷</span><span>×</span>
+          </div>
+          <span>
+            <b>Simple by design.</b><br>
+            Powerful where it matters.
+          </span>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+
+        <div class="float-symbol symbol-plus">+</div>
+        <div class="float-symbol symbol-pi">π</div>
+        <div class="float-symbol symbol-root">√</div>
+
+        <div class="preview-calculator">
+          <div class="preview-top">
+            <span class="preview-brand"><i>∑</i> mathflow</span>
+            <span class="preview-dots"><i></i><i></i><i></i></span>
+          </div>
+
+          <div class="preview-display">
+            <small>YOUR CALCULATION</small>
+            <div class="preview-expression">128 × 24</div>
+            <div class="preview-result" id="previewResult">
+              3,072<span class="cursor">|</span>
+            </div>
+          </div>
+
+          <div class="preview-keys">
+            <span>AC</span><span>±</span><span>%</span><span class="p-op">÷</span>
+            <span>7</span><span>8</span><span>9</span><span class="p-op">×</span>
+            <span>4</span><span>5</span><span>6</span><span class="p-op">−</span>
+            <span>1</span><span>2</span><span>3</span><span class="p-op">+</span>
+            <span>⌫</span><span>0</span><span>.</span><span class="p-equals">=</span>
+          </div>
+        </div>
+
+        <div class="floating-note note-history">
+          <span class="note-icon">↺</span>
+          <span><b>History saved</b><small>Pick up where you left off</small></span>
+          <span class="note-check">✓</span>
+        </div>
+
+        <div class="floating-note note-convert">
+          <span class="note-icon">⇄</span>
+          <span><b>Quick convert</b><small>Units made simple</small></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator Application -->
+  <div class="mobile-overlay" id="overlay"></div>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="logo">∑</div>
+        <div><strong>MathFlow</strong><small>Smart calculator</small></div>
+      </div>
+
+      <nav class="navgroup">
+        <div class="navlabel">GENERAL</div>
+        <button class="navitem active" data-view="standard">▦ &nbsp; Standard</button>
+        <button class="navitem" data-view="scientific">▤ &nbsp; Scientific</button>
+        <button class="navitem" data-view="history">◷ &nbsp; History</button>
+      </nav>
+
+      <nav class="navgroup">
+        <div class="navlabel">CONVERTERS</div>
+        <button class="navitem" data-view="energy">ϟ &nbsp; Energy</button>
+        <button class="navitem" data-view="area">▱ &nbsp; Area</button>
+        <button class="navitem" data-view="speed">◴ &nbsp; Speed</button>
+        <button class="navitem" data-view="time">◷ &nbsp; Time</button>
+      </nav>
+
+      <nav class="navgroup">
+        <div class="navlabel">PREFERENCES</div>
+        <button class="navitem" data-view="settings">⚙ &nbsp; Settings</button>
+      </nav>
+
+      <div class="sidefoot">
+        <b>MathFlow v1.0</b><br>
+        Simple math. Clear thinking.
+      </div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <button class="iconbtn hamb" id="hamb">☰</button>
+        <div>
+          <div class="pageTitle" id="pageTitle">Standard Calculator</div>
+          <div class="subtitle" id="pageSub">Fast, reliable calculations for everyday math.</div>
+        </div>
+        <div class="topactions">
+          <button class="iconbtn" id="backHome" title="Home">⌂</button>
+        </div>
+      </header>
+
+      <section class="view active" id="view-standard">
+        <div class="calc-layout standard-layout">
+          <div class="calc-card">
+            <div class="display">
+              <div class="display-label">CURRENT CALCULATION</div>
+              <div class="expression" id="expression">Ready for your next calculation</div>
+              <div class="result" id="result" aria-live="polite">0</div>
+            </div>
+
+            <div class="keypad" id="keypad">
+              <button class="key utility" data-action="clear">AC</button>
+              <button class="key utility" data-action="sign">±</button>
+              <button class="key utility" data-value="%">%</button>
+              <button class="key operator" data-value="÷">÷</button>
+
+              <button class="key" data-value="7">7</button>
+              <button class="key" data-value="8">8</button>
+              <button class="key" data-value="9">9</button>
+              <button class="key operator" data-value="+">+</button>
+
+              <button class="key" data-value="4">4</button>
+              <button class="key" data-value="5">5</button>
+              <button class="key" data-value="6">6</button>
+              <button class="key operator" data-value="−">−</button>
+
+              <button class="key" data-value="1">1</button>
+              <button class="key" data-value="2">2</button>
+              <button class="key" data-value="3">3</button>
+              <button class="key utility" data-action="backspace">⌫</button>
+
+              <button class="key" data-value=".">.</button>
+              <button class="key" data-value="0">0</button>
+              <button class="key operator" data-value="×">×</button>
+              <button class="key equals" data-action="equals">=</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-scientific">
+        <div class="sectionhead">
+          <div><h2>Scientific calculator</h2><p>Extra functions for everyday problem solving.</p></div>
+          <button class="secondary" id="scientificBack">Open standard ↗</button>
+        </div>
+        <div class="calc-card sci-card">
+          <div class="display">
+            <div class="display-label">SCIENTIFIC MODE</div>
+            <div class="expression" id="sciExpression">Enter an expression</div>
+            <div class="result" id="sciResult">0</div>
+          </div>
+          <div class="keypad scientific-grid" id="sciKeypad">
+            <button class="key utility" data-sci="sin(">sin</button>
+            <button class="key utility" data-sci="cos(">cos</button>
+            <button class="key utility" data-sci="tan(">tan</button>
+            <button class="key utility" data-sci="sqrt(">√</button>
+            <button class="key utility" data-sci="^">xʸ</button>
+            <button class="key utility" data-sci="log(">log</button>
+            <button class="key utility" data-sci="ln(">ln</button>
+            <button class="key utility" data-sci="π">π</button>
+            <button class="key utility" data-sci="(">(</button>
+            <button class="key utility" data-sci=")">)</button>
+            <button class="key" data-sci="7">7</button>
+            <button class="key" data-sci="8">8</button>
+            <button class="key" data-sci="9">9</button>
+            <button class="key operator" data-sci="÷">÷</button>
+            <button class="key utility" data-sciaction="backspace">⌫</button>
+            <button class="key" data-sci="4">4</button>
+            <button class="key" data-sci="5">5</button>
+            <button class="key" data-sci="6">6</button>
+            <button class="key operator" data-sci="×">×</button>
+            <button class="key utility" data-sciaction="clear">AC</button>
+            <button class="key" data-sci="1">1</button>
+            <button class="key" data-sci="2">2</button>
+            <button class="key" data-sci="3">3</button>
+            <button class="key operator" data-sci="−">−</button>
+            <button class="key operator" data-sci="+">+</button>
+            <button class="key" data-sci="0">0</button>
+            <button class="key" data-sci=".">.</button>
+            <button class="key utility" data-sci="Ans">Ans</button>
+            <button class="key equals" data-sciaction="equals" style="grid-column:span 2">=</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-history">
+        <div class="sectionhead">
+          <div><h2>Calculation history</h2><p>Your recent calculations, saved on this device.</p></div>
+          <div class="history-controls">
+            <button class="secondary" id="exportHistory">Export CSV</button>
+            <button class="secondary" id="clearHistory">Clear history</button>
+          </div>
+        </div>
+        <div class="history-full" id="fullHistory"></div>
+      </section>
+
+      <section class="view" id="view-energy">
+        <div class="sectionhead"><div><h2>Energy converter</h2><p>Convert common energy units instantly.</p></div></div>
+        <div class="card converter" data-converter="energy"></div>
+      </section>
+
+      <section class="view" id="view-area">
+        <div class="sectionhead"><div><h2>Area converter</h2><p>Convert land, room and surface measurements.</p></div></div>
+        <div class="card converter" data-converter="area"></div>
+      </section>
+
+      <section class="view" id="view-speed">
+        <div class="sectionhead"><div><h2>Speed converter</h2><p>Convert travel and motion speeds.</p></div></div>
+        <div class="card converter" data-converter="speed"></div>
+      </section>
+
+      <section class="view" id="view-time">
+        <div class="sectionhead"><div><h2>Time converter</h2><p>Convert durations from seconds to days and beyond.</p></div></div>
+        <div class="card converter" data-converter="time"></div>
+      </section>
+
+      <section class="view" id="view-settings">
+        <div class="sectionhead"><div><h2>Settings</h2><p>Make MathFlow work the way you like.</p></div></div>
+        <div class="settings-grid">
+          <div class="settingrow">
+            <div><b>App theme</b><p>Choose light or dark theme.</p></div>
+            <select class="field select" id="themeSelect">
+              <option value="dark">Dark</option><option value="light">Light</option>
+            </select>
+          </div>
+          <div class="settingrow">
+            <div><b>Angle unit</b><p>Used by sin, cos and tan in scientific mode.</p></div>
+            <select class="field select" id="angleSelect">
+              <option value="deg">Degrees</option><option value="rad">Radians</option>
+            </select>
+          </div>
+          <div class="settingrow">
+            <div><b>Save calculation history</b><p>Keep recent calculations in this browser.</p></div>
+            <input class="toggle" type="checkbox" id="saveHistory" checked>
+          </div>
+          <div class="settingrow">
+            <div><b>Keyboard shortcuts</b><p>Numbers and operators to type, Enter to calculate, Esc to clear.</p></div>
+            <span class="pill">ENABLED</span>
+          </div>
+          <div class="settingrow">
+            <div><b>About MathFlow</b><p>Your history stays in your browser.</p></div>
+            <span class="pill">v1.0</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
